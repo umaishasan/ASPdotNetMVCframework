@@ -1,0 +1,34 @@
+﻿@model ASPdotNetMVCframework.Context.ProductTable
+
+@{
+    ViewBag.Title = "Product";
+}
+
+<style>
+    .error{
+        font-size: 12px;
+        color: red;
+    }
+</style>
+
+@using (Html.BeginForm("AddProduct", "Product",FormMethod.Post))
+{ 
+<div class="container">
+    <div class="form-group">
+        @Html.HiddenFor(x=>x.productId)
+        <label>Product Name</label>
+        @Html.TextBoxFor(x => x.productName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.productName, "", new { @class = "error" })
+    </div>
+    <div class="form-group">
+        <label>Product Price</label>
+        @Html.TextBoxFor(x => x.productPrice, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.productPrice, "", new { @class = "error" })
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-danger">Reset</button>
+    </div>
+</div>
+}
+
